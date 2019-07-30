@@ -1,0 +1,28 @@
+.content-wrapper{
+  display: flex;
+  justify-content: center;
+  margin-top: 30vh;
+  margin-bottom: 25vh;
+}
+
+.content {
+  width: 50%;
+}
+
+.landingpageContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.landingpageContent {
+  flex: 1 0 40%;
+  margin: 5vh;
+  font-size: 20px;
+}
+
+.landingpageImg {
+  height: 45vh;
+  width: 100%;
+  object-fit: contain;
+}
