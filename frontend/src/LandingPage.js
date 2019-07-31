@@ -3,10 +3,10 @@ import logo from './logo.svg';
 import pie from './images/piegraph.png';
 import articleDist from './images/articledistribution.png';
 import usersTypes from './images/usertypeyear.png';
-import './MainContent.css';
+import './LandingPage.css';
 
 
-class MainContent extends Component {
+class LandingPage extends Component {
   render() {
     return(
       <div class='content-wrapper'>
@@ -39,4 +39,4 @@ class MainContent extends Component {
   }
 }
 
-export default MainContent;
+export default LandingPage;
