@@ -42,24 +42,39 @@ a {
   width: 34%;
 }
 
-.nav-item {
+.nav-item-large {
   padding-top: 10vh;
   padding-bottom: 10vh;
   padding-right: 1vw;
   padding-left: 1vw;
   transition: 1s;
 }
-
-.nav-item:hover{
-  background-color: rgb(0, 55, 130);
+.nav-item-small {
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  padding-right: 1vw;
+  padding-left: 1vw;
+  transition: 1s;
 }
 
-#logo {
+.nav-item-large:hover{
+  background-color: rgb(0, 63, 130);
+}
+.nav-item-small:hover{
+  background-color: rgb(0, 63, 130);
+}
+
+#logo-large {
   padding-left: 2vw;
   padding-right: 2vw;
   padding-top: 8vh;
   padding-bottom: 8vh;
   font-size: 45px;
   font-weight: bold;
-  transition: 0.5s;
+}
+
+#logo-small {
+  padding: 2vh 2vw 2vh 2vw;
+  font-size: 18px;
+  font-weight: bold;
 }
