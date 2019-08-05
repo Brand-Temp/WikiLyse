@@ -5,6 +5,7 @@ import './App.css';
 import Nav from './Nav.js';
 import LandingPage from './LandingPage';
 import Placeholder from './Placeholder';
+import Login from './Login';
 
 class App extends Component {
   render() {
@@ -17,7 +18,7 @@ class App extends Component {
             <Route path="/overall" component={Placeholder} />
             <Route path="/article" component={Placeholder} />
             <Route path="/authors" component={Placeholder} />
-            <Route path="/login" component={Placeholder} />
+            <Route path="/login" component={Login} />
             <Route path="/signup" component={Placeholder} />
             <Route path="/logout" component={Placeholder} />
           </Switch>
