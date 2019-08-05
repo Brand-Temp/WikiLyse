@@ -6,7 +6,7 @@ import './Nav.css';
 class Nav extends Component {
   constructor(props) {
     super(props);
-    this.state = {nav: 'nav-item-small', logo: 'logo-small'};
+    this.state = {nav: 'nav-item-large', logo: 'logo-large'};
   }
 
   componentDidMount() {
