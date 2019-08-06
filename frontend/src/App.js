@@ -6,6 +6,7 @@ import Nav from './Nav.js';
 import LandingPage from './LandingPage';
 import Placeholder from './Placeholder';
 import Login from './Login';
+import Signup from './Signup';
 
 class App extends Component {
   render() {
@@ -19,7 +20,7 @@ class App extends Component {
             <Route path="/article" component={Placeholder} />
             <Route path="/authors" component={Placeholder} />
             <Route path="/login" component={Login} />
-            <Route path="/signup" component={Placeholder} />
+            <Route path="/signup" component={Signup} />
             <Route path="/logout" component={Placeholder} />
           </Switch>
         </Router>
