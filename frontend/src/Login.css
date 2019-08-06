@@ -9,7 +9,19 @@
   width: 50%;
 }
 
-.formbox {
+.formbox-blur {
+  border: unset;
+  border-bottom-color: cadetblue;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  font-size: 24px;
+  margin: 2vh 2vw 2vh 2vw;
+  width: 10vw;
+  text-align: center;
+  transition-duration: 0.5s;
+}
+
+.formbox-focus {
   border: unset;
   border-bottom-color: cadetblue;
   border-bottom-style: solid;
@@ -17,6 +29,8 @@
   font-size: 24px;
   margin: 2vh 2vw 2vh 2vw;
   width: 30vw;
+  text-align: center;
+  transition-duration: 0.5s;
 }
 
 .formbutton {
@@ -27,4 +41,5 @@
   border: unset;
   border-radius: 5vw;
   margin: 2vh 2vw 2vh 2vw;
+  text-align: center;
 }
