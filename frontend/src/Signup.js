@@ -15,6 +15,7 @@ class Signup extends Component {
       errors: {
         username: '',
         email: '',
+        emailconf: '',
         password: '',
       },
       usernameValid: false,
@@ -66,8 +67,25 @@ class Signup extends Component {
           }
         })
         .catch((error) => {
-          alert(error);
+          this.setState({errors:{username:'There was an error processing this request, please try again later.'}});
         });
+      } else if (name === 'email') {
+        const value = event.target.value;
+        if (value.length > 0) {
+          axios.get(`http://localhost:3001/signup/echeck/${value}`)
+          .then((response) => {
+            if(response.data.used == 1) {
+              this.setState({errors:{email: 'This is has already been registered.'}});
+              this.setState({emailValid: false});
+            } else {
+              this.setState({errors:{email: ''}});
+              this.setState({emailValid: true});
+            }
+          })
+          .catch((error) => {
+            this.setState({errors:{username:'There was an error processing this request, please try again later.'}});
+          });
+        }
       }
     }
     event.preventDefault();
@@ -82,7 +100,10 @@ class Signup extends Component {
               {this.state.errors.username} <br />
             </label>
             <input name="username" type="text" class="formbox" placeholder="Username" onChange={this.change}></input><br />
-            <input type="text" class="formbox" placeholder="Email"></input><br />
+            <label for="email">
+              {this.state.errors.email} <br />
+            </label>
+            <input name="email" type="text" class="formbox" placeholder="Email"></input><br />
             <input type="text" class="formbox" placeholder="Confirm email"></input><br />
             <label for="password">
               {this.state.errors.password} <br />
