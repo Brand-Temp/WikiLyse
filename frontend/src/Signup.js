@@ -28,8 +28,25 @@ class Signup extends Component {
   }
 
   submit(event) {
-    alert('Submission!');
-
+    if (this.state['emailValid'] && this.state['passwordValid'] && this.state['usernameValid']) {
+      this.setState({errors:{username: ''}});
+      // ENV variable in production
+      axios.post('http://localhost:3001/signup', {
+        username: this.state['username'],
+        hash: this.state['password'],
+        email: this.state['email']
+      })
+      .then((response) => {
+        if(response.data.error === 0) {
+          alert('SUCCESS!');
+        } else {
+          alert(response.body.field + ' was invalid.');
+        }
+      })
+      .catch((error) => {
+        this.setState({errors:{username: 'There was a problem with the request, try again later.'}});
+      });
+    }
     event.preventDefault();
   }
 
