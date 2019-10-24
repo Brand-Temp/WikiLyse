@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './Signup.css';
 import crypto from 'crypto';
+import axios from 'axios';
 
 class Signup extends Component {
   constructor(props) {
@@ -49,8 +50,26 @@ class Signup extends Component {
           this.setState({passwordValid: true});
         }
       }
+    } else if (name === 'username') {
+      const value = event.target.value;
+      // This will need to be changed to an anv variable for prod
+      if(value.length > 0) {
+        axios.get(`http://localhost:3001/signup/ucheck/${value}`)
+        .then((response) => {
+          console.log(response);
+          if (response.data.used == 1) {
+            this.setState({errors:{username:'This username has already been registered.'}});
+            this.setState({usernameValid: false});
+          } else {
+            this.setState({errors:{username:''}});
+            this.setState({usernameValid: true});
+          }
+        })
+        .catch((error) => {
+          alert(error);
+        });
+      }
     }
-    
     event.preventDefault();
   }
 
@@ -59,7 +78,10 @@ class Signup extends Component {
       <div class="content-wrapper">
         <div class="content">
           <form onSubmit={this.submitHandler}>
-              <input type="text" class="formbox" placeholder="Username"></input><br />
+            <label for="username">
+              {this.state.errors.username} <br />
+            </label>
+            <input name="username" type="text" class="formbox" placeholder="Username" onChange={this.change}></input><br />
             <input type="text" class="formbox" placeholder="Email"></input><br />
             <input type="text" class="formbox" placeholder="Confirm email"></input><br />
             <label for="password">

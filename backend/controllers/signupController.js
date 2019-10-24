@@ -23,3 +23,14 @@ exports.Signup = function(req, res, next) {
     }
   });
 };
+
+exports.Ucheck = function(req, res, next) {
+  const uname = req.params['u'];
+  User.findOne({username: uname}, (err, data) => {
+    if(data) {
+      res.send({used: 1});
+    } else {
+      res.send({used: 0});
+    }
+  });
+};

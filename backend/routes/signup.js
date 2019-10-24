@@ -10,5 +10,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', controller.Signup);
+router.get('/ucheck/:u', controller.Ucheck);
 
 module.exports =router;
