@@ -1,7 +1,6 @@
 
 exports.logout = function(req, res, next) {
     req.session.destroy();
-    res.render('index',{title: 'WikiLyse',flag:0});
-   
+    res.send({message: 'Logout successful', sess_id: req.session.id});   
   };
   

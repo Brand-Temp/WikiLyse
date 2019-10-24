@@ -11,6 +11,8 @@ const loginRouter = require('./routes/login');
 const signupRouter =require('./routes/signup');
 const articleRouter =require('./routes/articleAnalyze');
 const logoutRouter = require('./routes/logout');
+const cors = require('cors');
+
 const app = express();
 
 // view engine setup
@@ -32,6 +34,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
+// Should create a whitelist for CORS so the API isn't exposed
+app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
