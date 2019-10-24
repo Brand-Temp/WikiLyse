@@ -34,3 +34,14 @@ exports.Ucheck = function(req, res, next) {
     }
   });
 };
+
+exports.Echeck = function(req, res, next) {
+  const emailaddr = req.params['e'];
+  User.findOne({email:emailaddr}, (err, data) => {
+    if (data) {
+      res.send({used: 1});
+    } else {
+      res.send({used: 0});
+    }
+  });
+}
