@@ -92,6 +92,17 @@ class Signup extends Component {
           this.setState({email:value});
         });
       }
+    } else if (name === 'emailconf') {
+      const value = event.target.value;
+      if (value.length > 0) {
+        if (value !== this.state['email']) {
+          this.setState({errors:{emailconf: "These emails don't match"}})
+          this.setState({emailValid: false});
+        } else {
+          this.setState({errors:{emailconf: ""}})
+          this.setState({emailValid: true});
+        }
+      }
     }
     event.preventDefault();
   }
@@ -109,7 +120,10 @@ class Signup extends Component {
               {this.state.errors.email} <br />
             </label>
             <input name="email" type="text" class="formbox" placeholder="Email" onChange={this.change}></input><br />
-            <input type="text" class="formbox" placeholder="Confirm email"></input><br />
+            <label for="emailconf">
+              {this.state.errors.emailconf} <br />
+            </label>
+            <input name="emailconf"type="text" class="formbox" placeholder="Confirm email" onChange={this.change}></input><br />
             <label for="password">
               {this.state.errors.password} <br />
             </label>
