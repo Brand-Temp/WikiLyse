@@ -1,0 +1,32 @@
+.content-wrapper{
+  display: flex;
+  justify-content: center;
+  margin-top: 30vh;
+  margin-bottom: 25vh;
+}
+
+.content {
+  width: 50%;
+}
+
+.formbutton {
+  font-size: 24px;
+  background-color: rgb(0, 107, 194);
+  color: white;
+  padding: 2vh 2vw 2vh 2vw;
+  border: unset;
+  border-radius: 5vw;
+  margin: 2vh 2vw 2vh 2vw;
+  text-align: center;
+}
+
+.formbox {
+  border: unset;
+  border-bottom-color: cadetblue;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  font-size: 24px;
+  margin: 2vh 2vw 2vh 2vw;
+  width: 30vw;
+  text-align: center;
+}

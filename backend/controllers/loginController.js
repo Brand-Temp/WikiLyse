@@ -15,9 +15,9 @@ exports.login = function(req, res, next) {
         name: data.firstname
       };
       req.session.user =user;
-      res.render('articleAnalyze.ejs',{flag:1,name:req.session.user.name});
+      res.send({message: 'That worked!!', sess_id:req.session.id});
     } else {
-      res.render('error',{message:"account or password is wrong, Please login again",flag:0});
+      res.send({mesage: 'That did not work'});
     }
   });
 };

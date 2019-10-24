@@ -21,7 +21,10 @@ app.use(cookieParser('user-Privilege'));
 app.use(session({
   secret: 'user-Privilege',
   resave: true,
-  saveUninitialized: true,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 604800000,
+  },
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
