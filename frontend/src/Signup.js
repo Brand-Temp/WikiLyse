@@ -72,7 +72,7 @@ class Signup extends Component {
       const value = event.target.value;
       // This will need to be changed to an anv variable for prod
       if(value.length > 0) {
-        axios.get(`http://localhost:3001/signup/ucheck/${value}`)
+        axios.get(`${process.env.REACT_APP_BACKEND_ENDPOINT}/signup/ucheck/${value}`)
         .then((response) => {
           if (response.data.used == 1) {
             this.setState({errors:{username:'This username has already been registered.'}});
