@@ -31,7 +31,7 @@ class Signup extends Component {
     if (this.state['emailValid'] && this.state['passwordValid'] && this.state['usernameValid']) {
       this.setState({errors:{username: ''}});
       // ENV variable in production
-      axios.post('http://localhost:3001/signup', {
+      axios.post(process.env.REACT_APP_BACKEND_ENDPOINT+'/signup', {
         username: this.state['username'],
         hash: this.state['password'],
         email: this.state['email']

@@ -1,3 +1,5 @@
 # Dev folders
 */data/
 */node_modules
+
+.env
