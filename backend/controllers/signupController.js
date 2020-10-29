@@ -3,25 +3,31 @@ const crypto =require('crypto');
 
 
 exports.Signup = function(req, res, next) {
-  const md5 =crypto.createHash('md5');
-  const newPas = md5.update(req.body.password).digest('hex');
-  const postData ={
-    username: req.body.email,
-    password: newPas,
-    firstname: req.body.firstname,
-    secondname: req.body.secondname,
-  };
-  User.findOne({username: postData.username}, function(err, data) {
-    if (data) {
-      
-      res.render('error',{message:"This email has already been used.",flag:0});
+  const uname = req.body.username;
+  const pass_hash = req.body.hash;
+  const emailaddr = req.body.email;
+  
+  // Check Username and Email available
+  User.findOne({username: uname}, (err, data) => {
+    if(data) {
+      res.send({error: 1, field: 'username'});
     } else {
-      User.create(postData, function(err, data) {
-        if (err) throw err;
-        res.render('error',{message:"Sign-up successful.",flag:0});
+      User.findOne({email: emailaddr}, (err, data) => {
+        if(data) {
+          res.send({error: 1, field: 'email'});
+        } else {
+          User.create({username: uname, password: pass_hash, email: emailaddr}, (err, data) => {
+            if(data) {
+              res.send({error: 0, field: ''});
+            } else {
+              res.send({error: 1, field:''});
+            }
+          });
+        }
       });
     }
   });
+  
 };
 
 exports.Ucheck = function(req, res, next) {
@@ -29,6 +35,7 @@ exports.Ucheck = function(req, res, next) {
   User.findOne({username: uname}, (err, data) => {
     if(data) {
       res.send({used: 1});
+      console.log('e ok');
     } else {
       res.send({used: 0});
     }
