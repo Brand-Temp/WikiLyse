@@ -13,7 +13,7 @@ class Login extends Component {
   }
 
   submit(event) {
-    alert('Submission!');
+    
     event.preventDefault();
   }
 
