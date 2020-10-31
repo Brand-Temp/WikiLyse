@@ -1,6 +1,6 @@
 
 exports.logout = function(req, res, next) {
     req.session.destroy();
-    res.send({message: 'Logout successful', sess_id: req.session.id});   
+    res.send({message: 1, sess_id: req.session.id});   
   };
   
